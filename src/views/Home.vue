@@ -1,18 +1,37 @@
-<template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+<template lang='pug'>
+  .page.wrapper
+    template(v-if='sortedRecepies.length > 0')
+      app-recepie-item(v-for='(item, i) in sortedRecepies' :key='i' :recepie='recepies[item]')
+
+    .page-empty.flow(v-else)
+      h2.h3-like You do not have any recepie, do you want add someone?
+      app-button(to='/add-recepie' value='Add recepie' filled)
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
+import RecepieItem from '@/components/Recepie/RecepieItem.vue';
 
 export default {
-  name: 'Home',
+  name: 'Cookbook',
   components: {
-    HelloWorld,
+    'app-recepie-item': RecepieItem,
+  },
+  computed: {
+    recepies() {
+      return this.$store.getters['recepies/recepies'];
+    },
+    sortedRecepies() {
+      return this.$store.getters['recepies/sortedMainRecepies'];
+    },
+    process() {
+      return process.env;
+    },
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.page-empty {
+  text-align: center;
+}
+</style>

@@ -1,0 +1,102 @@
+@import '@/styles/_reset.scss';
+@import '@/styles/_typography.scss';
+@import '@/styles/_transitions.scss';
+
+h1, h2, h3, h4, h5, h6 {
+  color: $headline;
+}
+html {
+  background-color: $bg-main;
+  font-size: 18px;
+}
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 500;
+  color: $text;
+}
+.flow {
+  > * + * {
+    margin-top: 20px;
+  }
+}
+.link {
+  color: $link;
+  text-decoration: none;
+  &:hover {
+    opacity: .6;
+    text-decoration: underline;
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+
+  a + a {
+    margin-left: 20px;
+  }
+
+  a {
+    font-weight: 700;
+    color: $primary;
+    text-decoration: none;
+
+    &.router-link-exact-active {
+      color: $error;
+      text-decoration: underline;
+    }
+  }
+}
+.page {
+  padding-bottom: 40px;
+}
+.wrapper {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.icon-close {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  &:hover {
+    opacity: .6;
+  }
+  &:before,
+  &:after {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 100%;
+    width: 2px;
+    background-color: $error;
+  }
+  &:before {
+    transform: rotate(45deg);
+  }
+  &:after {
+    transform: rotate(-45deg);
+  }
+}
+button {
+  outline: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
